@@ -67,8 +67,8 @@ python3 detect.py --source 0 --weights Sbest.pt --conf 0.5 --img 160
 4. python detect.py --source 0 --weights best.pt --conf 0.5
 
 ### 참고
-best.pt -> train한것중 가장 성능이 좋은 pt
-last.pt -> 제일 최근에 train한 pt
+- best.pt -> train한것중 가장 성능이 좋은 pt<br>
+- last.pt -> 제일 최근에 train한 pt<br>
 
 ---
 ## Git 충돌
