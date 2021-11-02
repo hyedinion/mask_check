@@ -73,8 +73,7 @@ python3 detect.py --source 0 --weights Sbest.pt --conf 0.5 --img 160
 ---
 ## Git 충돌
 git 폴더 안에 git clone을 했거나 다른 git 폴더가 들어있을 경우<br>
-`You've added another git repository inside your current repository`<br>
-라는 경고가 뜬다<br>
+에러메세지 - `You've added another git repository inside your current repository`<br>
 
 ### 해결법
 1. 충돌이 나는 폴더로 들어가 `ls -a` 로 .git 파일이 있는지 확인한다.
@@ -86,7 +85,9 @@ git 폴더 안에 git clone을 했거나 다른 git 폴더가 들어있을 경�
 
 ### 1MB이상 파일 올리기
 에러메세지
-- `fatal: The remote end hung up unexpectedly`
+- `fatal: The remote end hung up unexpectedly`<br>
+
 개별 파일의 최고 용량을 늘려준다.
 - `git config --global http.postBuffer 20971520`<br>
+
 출처: https://crmn.tistory.com/58
