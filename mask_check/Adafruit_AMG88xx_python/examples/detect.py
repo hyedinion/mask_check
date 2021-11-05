@@ -225,8 +225,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
 
                     if save_img or save_crop or view_img:  # Add bbox to image
                         c = int(cls)  # integer class
-                        nl='\n'
-                        label = None if hide_labels else (names[c] if hide_conf else f'temperature : {thermal_sensor.readThermistor()} {nl} {names[c]} {conf:.2f}')
+                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         annotator.box_label(xyxy, label, color=colors(c, True))
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
@@ -235,9 +234,13 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
             print(f'{s}Done. ({t3 - t2:.3f}s)')
             print('Thermistor Temp = {0:0.2f} *C'.format(thermal_sensor.readThermistor()))
 
+            cv2.namedWindow(str(p),cv2.WINDOW_NORMAL)
+            cv2.setWindowProperty(str(p),cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
             # Stream results
             im0 = annotator.result()
             if view_img:
+                im0 = cv2.resize(im0,None,fx=2,fy=1.7) 
+                cv2.putText(im0,"temperature : "+str(thermal_sensor.readThermistor()), (0,50),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,0),2)
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
 
